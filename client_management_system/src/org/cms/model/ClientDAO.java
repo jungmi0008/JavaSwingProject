@@ -16,7 +16,7 @@ public class ClientDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private final String SELECT_ALL = "select * from cmsdb order by id asc";
+	private final String SELECT_ALL = "select * from cmsdb order by name asc";
 	private final String INSERT = "insert into cmsdb(id, name, gender, phone, address) values (cms_seq.nextval,?,?,?,?)";
 	private final String SELECT = "select * from cmsdb where id=?";
 	private final String UPDATE = "update cmsdb set name=?, gender=?, phone=?, address=? where id=?";
@@ -60,7 +60,7 @@ public class ClientDAO {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(SELECT_ALL);
 			while(rs.next()) {
-				int id = rs.getInt("id");
+				String id = rs.getString("id");
 				String name = rs.getString("name");
 				String gender = rs.getString("gender");
 				String phone = rs.getString("phone");
